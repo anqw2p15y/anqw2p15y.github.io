@@ -1,0 +1,1836 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>极品黑料 - 深度影像平台,记录真实故事</title>
+<meta name="description" content="极品黑料官方网站，深耕深度纪实影像与人物访谈领域，以专业创作者社区与正版高清内容生态，记录真实、有力量的故事。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121318'/%3E%3Cpath d='M22 20v24l22-12z' fill='%23e8453c'/%3E%3Ccircle cx='46' cy='18' r='5' fill='%23f5c451'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --hlw-ink:#121318;
+    --hlw-ink-soft:#1b1d24;
+    --hlw-paper:#f4f3ef;
+    --hlw-paper-2:#e9e7e0;
+    --hlw-red:#e8453c;
+    --hlw-red-deep:#c22e26;
+    --hlw-gold:#f5c451;
+    --hlw-grey:#8a8d95;
+    --hlw-line:rgba(18,19,24,.12);
+    --hlw-line-dark:rgba(244,243,239,.14);
+    --hlw-radius:16px;
+    --hlw-max:1180px;
+    --hlw-sticky:112px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--hlw-paper);
+    color:var(--hlw-ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  ul{list-style:none}
+  [id]{scroll-margin-top:var(--hlw-sticky)}
+  .hlw-wrap{max-width:var(--hlw-max);margin:0 auto;padding:0 24px}
+  .hlw-sticky-head{position:sticky;top:0;z-index:60}
+
+  /* ---------- 公告条 ---------- */
+  .hlw-notice{
+    background:var(--hlw-ink);
+    color:var(--hlw-paper);
+    font-size:13px;
+    letter-spacing:.02em;
+  }
+  .hlw-notice-inner{
+    max-width:var(--hlw-max);margin:0 auto;padding:8px 24px;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .hlw-notice-tag{
+    background:var(--hlw-red);color:#fff;font-size:11px;font-weight:700;
+    padding:1px 8px;border-radius:4px;letter-spacing:.08em;flex:none;
+  }
+  .hlw-notice-list{display:flex;gap:18px;flex-wrap:wrap;overflow:hidden}
+  .hlw-notice-list li{white-space:nowrap}
+  .hlw-notice-list li span{color:var(--hlw-gold)}
+  .hlw-notice-more{margin-left:auto;color:var(--hlw-gold);font-size:12px;flex:none}
+
+  /* ---------- 页头 ---------- */
+  .hlw-header{background:rgba(244,243,239,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--hlw-line)}
+  .hlw-header-inner{
+    max-width:var(--hlw-max);margin:0 auto;padding:0 24px;
+    height:72px;display:flex;align-items:center;gap:28px;
+  }
+  .hlw-logo{display:flex;align-items:center;gap:10px;flex:none}
+  .hlw-logo-mark{
+    width:38px;height:38px;border-radius:10px;background:var(--hlw-ink);
+    display:grid;place-items:center;position:relative;flex:none;
+  }
+  .hlw-logo-mark::before{
+    content:"";width:0;height:0;
+    border-left:12px solid var(--hlw-red);
+    border-top:8px solid transparent;border-bottom:8px solid transparent;
+    margin-left:3px;
+  }
+  .hlw-logo-mark::after{
+    content:"";position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;
+    background:var(--hlw-gold);
+  }
+  .hlw-logo-text{display:flex;flex-direction:column;line-height:1.2}
+  .hlw-logo-text strong{font-size:18px;letter-spacing:.04em}
+  .hlw-logo-text em{font-style:normal;font-size:10px;letter-spacing:.28em;color:var(--hlw-grey)}
+  .hlw-nav{display:flex;gap:4px;margin-left:8px;flex:1}
+  .hlw-nav a{
+    font-size:14px;padding:6px 12px;border-radius:8px;color:#3a3c44;transition:.2s;white-space:nowrap;
+  }
+  .hlw-nav a:hover,.hlw-nav a.is-active{background:var(--hlw-ink);color:var(--hlw-paper)}
+  .hlw-search{
+    display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--hlw-line);
+    border-radius:999px;padding:6px 6px 6px 16px;flex:none;width:248px;transition:.2s;
+  }
+  .hlw-search:focus-within{border-color:var(--hlw-red);box-shadow:0 0 0 3px rgba(232,69,60,.12)}
+  .hlw-search input{border:none;outline:none;background:none;font-size:13px;flex:1;color:var(--hlw-ink);min-width:0}
+  .hlw-search button{
+    background:var(--hlw-ink);color:var(--hlw-paper);border-radius:999px;
+    font-size:12px;padding:5px 14px;flex:none;transition:.2s;
+  }
+  .hlw-search button:hover{background:var(--hlw-red)}
+  .hlw-search-tip{font-size:12px;color:var(--hlw-red-deep);padding:6px 0 0;display:none}
+  .hlw-search-tip.is-on{display:block}
+  .hlw-burger{
+    display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--hlw-line);
+    place-items:center;flex:none;
+  }
+  .hlw-burger span{display:block;width:18px;height:2px;background:var(--hlw-ink);position:relative}
+  .hlw-burger span::before,.hlw-burger span::after{
+    content:"";position:absolute;left:0;width:18px;height:2px;background:var(--hlw-ink);transition:.2s;
+  }
+  .hlw-burger span::before{top:-6px}
+  .hlw-burger span::after{top:6px}
+
+  /* ---------- 首屏 ---------- */
+  .hlw-hero{
+    background:
+      radial-gradient(circle at 82% 12%,rgba(245,196,81,.16),transparent 46%),
+      radial-gradient(circle at 4% 88%,rgba(232,69,60,.14),transparent 40%),
+      var(--hlw-ink);
+    color:var(--hlw-paper);
+    padding:64px 0 72px;
+    position:relative;overflow:hidden;
+  }
+  .hlw-hero::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,transparent 0 118px,rgba(244,243,239,.035) 118px 119px);
+    pointer-events:none;
+  }
+  .hlw-hero-grid{
+    display:grid;grid-template-columns:1fr 1.02fr;gap:48px;align-items:center;position:relative;z-index:1;
+  }
+  .hlw-hero-kicker{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.2em;
+    color:var(--hlw-gold);border:1px solid rgba(245,196,81,.4);border-radius:999px;padding:4px 14px;margin-bottom:22px;
+  }
+  .hlw-hero-kicker i{width:6px;height:6px;border-radius:50%;background:var(--hlw-gold);display:block}
+  h1.hlw-title{
+    font-size:clamp(38px,5.4vw,66px);line-height:1.06;letter-spacing:.01em;font-weight:800;
+  }
+  h1.hlw-title span{color:var(--hlw-red);position:relative;display:inline-block}
+  h1.hlw-title span::after{
+    content:"";position:absolute;left:0;right:0;bottom:4px;height:8px;background:rgba(232,69,60,.22);z-index:-1;
+  }
+  .hlw-hero-sub{
+    margin-top:20px;font-size:16px;color:#c9cbd3;max-width:520px;
+  }
+  .hlw-hero-sub b{color:var(--hlw-paper);font-weight:600}
+  .hlw-hero-btns{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+  .hlw-btn{
+    display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
+    padding:12px 24px;border-radius:999px;transition:.2s;white-space:nowrap;
+  }
+  .hlw-btn-primary{background:var(--hlw-red);color:#fff}
+  .hlw-btn-primary:hover{background:var(--hlw-red-deep);transform:translateY(-2px)}
+  .hlw-btn-ghost{border:1px solid rgba(244,243,239,.32);color:var(--hlw-paper)}
+  .hlw-btn-ghost:hover{border-color:var(--hlw-gold);color:var(--hlw-gold)}
+  .hlw-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:42px;border-top:1px solid var(--hlw-line-dark);padding-top:24px}
+  .hlw-stats div{padding-right:16px}
+  .hlw-stats div + div{border-left:1px solid var(--hlw-line-dark);padding-left:20px}
+  .hlw-stats b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:.01em;color:var(--hlw-paper)}
+  .hlw-stats b em{font-style:normal;font-size:.6em;color:var(--hlw-gold);margin-left:2px}
+  .hlw-stats small{font-size:12px;color:var(--hlw-grey);letter-spacing:.06em}
+
+  .hlw-hero-visual{position:relative}
+  .hlw-hero-frame{
+    border-radius:22px;overflow:hidden;border:1px solid var(--hlw-line-dark);
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.8);position:relative;aspect-ratio:4/3;background:var(--hlw-ink-soft);
+  }
+  .hlw-hero-frame svg{width:100%;height:100%;display:block}
+  .hlw-hero-badge{
+    position:absolute;left:-14px;bottom:26px;background:var(--hlw-gold);color:#2a2208;
+    border-radius:12px;padding:10px 16px;font-size:12px;font-weight:700;line-height:1.4;
+    box-shadow:0 12px 28px -12px rgba(0,0,0,.6);
+  }
+  .hlw-hero-badge em{display:block;font-style:normal;font-size:10px;font-weight:500;letter-spacing:.14em;opacity:.72}
+  .hlw-hero-float{
+    position:absolute;right:-6px;top:-14px;background:rgba(244,243,239,.08);
+    border:1px solid var(--hlw-line-dark);backdrop-filter:blur(6px);
+    border-radius:10px;padding:6px 12px;font-size:11px;letter-spacing:.14em;color:var(--hlw-paper);
+  }
+
+  /* ---------- 区块通用 ---------- */
+  .hlw-section{padding:76px 0}
+  .hlw-section.alt{background:var(--hlw-paper-2)}
+  .hlw-section.dark{background:var(--hlw-ink);color:var(--hlw-paper)}
+  .hlw-sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+    padding-bottom:28px;border-bottom:1px solid var(--hlw-line);margin-bottom:40px;
+  }
+  .hlw-section.dark .hlw-sec-head{border-color:var(--hlw-line-dark)}
+  .hlw-sec-head-left{max-width:660px}
+  .hlw-sec-eyebrow{
+    font-size:11px;letter-spacing:.3em;color:var(--hlw-red);font-weight:700;margin-bottom:10px;display:block;
+  }
+  .hlw-section.dark .hlw-sec-eyebrow{color:var(--hlw-gold)}
+  h2.hlw-h2{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.25;letter-spacing:.01em}
+  .hlw-sec-desc{margin-top:10px;font-size:14px;color:#5c5f68;line-height:1.8}
+  .hlw-section.dark .hlw-sec-desc{color:#a9acb6}
+  .hlw-sec-link{
+    font-size:13px;font-weight:600;color:var(--hlw-red-deep);white-space:nowrap;padding-bottom:4px;border-bottom:1px solid transparent;transition:.2s;flex:none;
+  }
+  .hlw-sec-link:hover{border-color:currentColor}
+  .hlw-section.dark .hlw-sec-link{color:var(--hlw-gold)}
+
+  /* ---------- 定位解析 ---------- */
+  .hlw-about{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:start}
+  .hlw-about-side{position:sticky;top:calc(var(--hlw-sticky) + 24px)}
+  .hlw-about-side h3{font-size:20px;font-weight:800;line-height:1.4;margin-bottom:14px}
+  .hlw-about-side p{font-size:13px;color:#5c5f68;line-height:1.85;margin-bottom:20px}
+  .hlw-about-tags{display:flex;flex-wrap:wrap;gap:8px}
+  .hlw-about-tags span{
+    font-size:12px;padding:4px 12px;border-radius:999px;background:#fff;border:1px solid var(--hlw-line);color:#3a3c44;
+  }
+  .hlw-about-body{font-size:15px;line-height:2;color:#33353d}
+  .hlw-about-body p{margin-bottom:18px}
+  .hlw-about-body p b{color:var(--hlw-ink);font-weight:700}
+  .hlw-about-body .hlw-quote{
+    margin:26px 0;padding:20px 24px;background:#fff;border-left:4px solid var(--hlw-red);
+    border-radius:0 var(--hlw-radius) var(--hlw-radius) 0;font-size:15px;color:#2c2e35;line-height:1.9;
+  }
+  .hlw-about-body .hlw-quote em{font-style:normal;display:block;font-size:12px;color:var(--hlw-grey);margin-top:8px;letter-spacing:.08em}
+
+  /* ---------- 焦点内容 ---------- */
+  .hlw-focus-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}
+  .hlw-focus-main{
+    position:relative;border-radius:var(--hlw-radius);overflow:hidden;background:var(--hlw-ink);
+    color:var(--hlw-paper);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;
+  }
+  .hlw-focus-main .hlw-cover{position:absolute;inset:0}
+  .hlw-focus-main .hlw-cover svg{width:100%;height:100%;object-fit:cover}
+  .hlw-focus-main .hlw-cover::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,12,.92) 0%,rgba(8,8,12,.35) 52%,rgba(8,8,12,.05) 100%);
+  }
+  .hlw-focus-main-body{position:relative;z-index:1;padding:30px}
+  .hlw-tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .hlw-tag{
+    font-size:11px;letter-spacing:.06em;padding:3px 10px;border-radius:4px;
+    background:rgba(244,243,239,.14);color:var(--hlw-paper);
+  }
+  .hlw-tag.solid{background:var(--hlw-red);color:#fff}
+  .hlw-focus-main h3{font-size:23px;line-height:1.35;font-weight:800;margin-bottom:10px}
+  .hlw-focus-main p{font-size:13px;color:#c5c7ce;max-width:460px}
+  .hlw-meta{display:flex;align-items:center;gap:16px;font-size:12px;color:#9a9da7;margin-top:16px;flex-wrap:wrap}
+  .hlw-meta b{color:var(--hlw-paper);font-weight:600}
+  .hlw-focus-side{display:grid;grid-template-rows:1fr 1fr;gap:24px}
+  .hlw-focus-mini{
+    display:grid;grid-template-columns:118px 1fr;gap:16px;background:#fff;border-radius:var(--hlw-radius);
+    overflow:hidden;border:1px solid var(--hlw-line);transition:.25s;
+  }
+  .hlw-focus-mini:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(18,19,24,.4);border-color:rgba(232,69,60,.35)}
+  .hlw-focus-mini .hlw-cover{position:relative;overflow:hidden}
+  .hlw-focus-mini .hlw-cover svg{width:100%;height:100%}
+  .hlw-focus-mini-body{padding:14px 16px 14px 0;display:flex;flex-direction:column;justify-content:center}
+  .hlw-focus-mini-body span{font-size:11px;color:var(--hlw-red-deep);font-weight:700;letter-spacing:.08em;margin-bottom:4px}
+  .hlw-focus-mini-body h4{font-size:15px;line-height:1.45;font-weight:700}
+  .hlw-focus-mini-body small{font-size:12px;color:var(--hlw-grey);margin-top:6px}
+
+  /* ---------- 卡片通用 ---------- */
+  .hlw-card{
+    background:#fff;border:1px solid var(--hlw-line);border-radius:var(--hlw-radius);
+    overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+  }
+  .hlw-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(18,19,24,.45);border-color:rgba(232,69,60,.3)}
+  .hlw-card .hlw-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--hlw-ink-soft)}
+  .hlw-card .hlw-cover svg{width:100%;height:100%;display:block;transition:.4s}
+  .hlw-card:hover .hlw-cover svg{transform:scale(1.04)}
+  .hlw-cover-play{
+    position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;
+  }
+  .hlw-cover-play i{
+    width:46px;height:46px;border-radius:50%;background:rgba(8,8,12,.5);backdrop-filter:blur(4px);
+    display:grid;place-items:center;border:1px solid rgba(244,243,239,.4);
+  }
+  .hlw-cover-play i::before{
+    content:"";width:0;height:0;border-left:12px solid #fff;
+    border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px;
+  }
+  .hlw-cover-badge{
+    position:absolute;top:10px;left:10px;font-size:11px;padding:2px 9px;border-radius:4px;
+    background:rgba(8,8,12,.66);color:#fff;backdrop-filter:blur(4px);letter-spacing:.04em;
+  }
+  .hlw-cover-dur{
+    position:absolute;bottom:8px;right:8px;font-size:11px;padding:1px 7px;border-radius:4px;
+    background:rgba(8,8,12,.72);color:#fff;letter-spacing:.03em;
+  }
+  .hlw-card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .hlw-card-body h3{font-size:16px;line-height:1.45;font-weight:700}
+  .hlw-card-body p{font-size:13px;color:#5c5f68;line-height:1.7;flex:1}
+  .hlw-card-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--hlw-grey);flex-wrap:wrap}
+  .hlw-avatar{
+    width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+    font-size:11px;font-weight:700;color:#fff;flex:none;
+  }
+  .hlw-card-actions{display:flex;gap:8px;padding-top:10px;border-top:1px dashed var(--hlw-line);margin-top:4px}
+  .hlw-act{
+    display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#5c5f68;
+    padding:4px 10px;border-radius:999px;border:1px solid transparent;transition:.2s;
+  }
+  .hlw-act:hover{background:var(--hlw-paper-2)}
+  .hlw-act.is-like{color:var(--hlw-red-deep);border-color:rgba(232,69,60,.28);background:rgba(232,69,60,.07)}
+  .hlw-act.is-fav{color:#8a6a12;border-color:rgba(245,196,81,.5);background:rgba(245,196,81,.14)}
+  .hlw-act svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8}
+  .hlw-act.is-like svg,.hlw-act.is-fav svg{fill:currentColor;stroke:none}
+
+  /* ---------- 视频流 ---------- */
+  .hlw-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hlw-filter button{
+    font-size:13px;padding:6px 16px;border-radius:999px;border:1px solid var(--hlw-line);
+    background:#fff;color:#3a3c44;transition:.2s;
+  }
+  .hlw-filter button:hover{border-color:var(--hlw-red)}
+  .hlw-filter button.is-active{background:var(--hlw-ink);color:var(--hlw-paper);border-color:var(--hlw-ink)}
+  .hlw-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .hlw-feed .hlw-card.is-hidden{display:none}
+  .hlw-empty{
+    display:none;padding:44px;text-align:center;color:var(--hlw-grey);font-size:14px;
+    border:1px dashed var(--hlw-line);border-radius:var(--hlw-radius);background:#fff;
+  }
+  .hlw-empty.is-on{display:block}
+
+  /* ---------- 专题 ---------- */
+  .hlw-topics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .hlw-topic{
+    border-radius:var(--hlw-radius);padding:26px 24px;background:#fff;border:1px solid var(--hlw-line);
+    display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:.25s;
+  }
+  .hlw-topic::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hlw-red);
+  }
+  .hlw-topic:nth-child(2)::before{background:var(--hlw-gold)}
+  .hlw-topic:nth-child(3)::before{background:#4c6ef5}
+  .hlw-topic:nth-child(4)::before{background:#2f9e6e}
+  .hlw-topic:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(18,19,24,.4)}
+  .hlw-topic-state{font-size:11px;letter-spacing:.1em;color:var(--hlw-grey);display:flex;align-items:center;gap:6px}
+  .hlw-topic-state i{width:6px;height:6px;border-radius:50%;background:#2f9e6e;display:block}
+  .hlw-topic-state.done i{background:var(--hlw-grey)}
+  .hlw-topic h3{font-size:18px;font-weight:800;line-height:1.4}
+  .hlw-topic p{font-size:13px;color:#5c5f68;line-height:1.75;flex:1}
+  .hlw-topic-foot{display:flex;justify-content:space-between;font-size:12px;color:var(--hlw-grey);padding-top:10px;border-top:1px dashed var(--hlw-line)}
+
+  /* ---------- 创作者 ---------- */
+  .hlw-creators{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .hlw-creator{
+    background:#fff;border:1px solid var(--hlw-line);border-radius:var(--hlw-radius);
+    padding:22px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;transition:.25s;
+  }
+  .hlw-creator:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(18,19,24,.4);border-color:rgba(232,69,60,.3)}
+  .hlw-creator .hlw-avatar{width:52px;height:52px;font-size:19px;border-radius:16px}
+  .hlw-creator h3{font-size:16px;font-weight:800}
+  .hlw-creator .hlw-creator-field{font-size:11px;letter-spacing:.08em;color:var(--hlw-red-deep);font-weight:700}
+  .hlw-creator p{font-size:13px;color:#5c5f68;line-height:1.7;flex:1}
+  .hlw-creator-nums{display:flex;gap:16px;font-size:12px;color:var(--hlw-grey);width:100%;padding-top:10px;border-top:1px dashed var(--hlw-line)}
+  .hlw-creator-nums b{color:var(--hlw-ink);font-weight:700}
+  .hlw-creator-more{font-size:12px;font-weight:700;color:var(--hlw-red-deep);margin-top:auto}
+
+  /* ---------- 故事随笔 ---------- */
+  .hlw-stories{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .hlw-story{
+    background:#fff;border:1px solid var(--hlw-line);border-radius:var(--hlw-radius);
+    padding:26px 26px 24px;display:flex;flex-direction:column;gap:10px;
+  }
+  .hlw-story-head{display:flex;align-items:center;gap:10px}
+  .hlw-story-head .hlw-avatar{width:26px;height:26px;font-size:12px}
+  .hlw-story-head small{font-size:12px;color:var(--hlw-grey)}
+  .hlw-story h3{font-size:17px;font-weight:800;line-height:1.45}
+  .hlw-story p{font-size:14px;color:#44464e;line-height:1.85}
+  .hlw-story-marks{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .hlw-story-marks span{font-size:11px;color:#6b6e77;background:var(--hlw-paper-2);padding:2px 9px;border-radius:4px}
+
+  /* ---------- 作品墙 ---------- */
+  .hlw-wall{
+    display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:132px;gap:14px;
+  }
+  .hlw-wall-item{position:relative;border-radius:12px;overflow:hidden;background:var(--hlw-ink-soft)}
+  .hlw-wall-item svg{width:100%;height:100%;display:block;transition:.35s}
+  .hlw-wall-item:hover svg{transform:scale(1.05)}
+  .hlw-wall-item figcaption{
+    position:absolute;left:10px;right:10px;bottom:8px;font-size:12px;color:#fff;font-weight:600;
+    text-shadow:0 1px 6px rgba(0,0,0,.7);line-height:1.35;
+  }
+  .hlw-wall-item::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,12,.72),transparent 62%);
+    pointer-events:none;
+  }
+  .hlw-wall-item.w-lg{grid-column:span 3;grid-row:span 2}
+  .hlw-wall-item.w-md{grid-column:span 2;grid-row:span 1}
+  .hlw-wall-item.w-sm{grid-column:span 1;grid-row:span 1}
+
+  /* ---------- 用户评价 ---------- */
+  .hlw-reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .hlw-review{
+    background:#fff;border:1px solid var(--hlw-line);border-radius:var(--hlw-radius);
+    padding:22px 22px 20px;display:flex;flex-direction:column;gap:12px;position:relative;
+  }
+  .hlw-review::before{
+    content:"“";position:absolute;right:18px;top:6px;font-size:52px;line-height:1;color:rgba(232,69,60,.16);font-family:Georgia,serif;
+  }
+  .hlw-review p{font-size:14px;line-height:1.85;color:#33353d}
+  .hlw-review-head{display:flex;align-items:center;gap:10px}
+  .hlw-review-head .hlw-avatar{width:30px;height:30px;font-size:12px}
+  .hlw-review-head b{font-size:13px;display:block;line-height:1.3}
+  .hlw-review-head small{font-size:11px;color:var(--hlw-grey)}
+  .hlw-review-stars{font-size:12px;color:var(--hlw-gold);letter-spacing:.14em}
+
+  /* ---------- 榜单 ---------- */
+  .hlw-rank{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .hlw-rank-box{background:#fff;border:1px solid var(--hlw-line);border-radius:var(--hlw-radius);overflow:hidden}
+  .hlw-rank-box h3{
+    font-size:15px;font-weight:800;padding:16px 20px;border-bottom:1px solid var(--hlw-line);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .hlw-rank-box h3 small{font-size:11px;color:var(--hlw-grey);font-weight:500;letter-spacing:.06em}
+  .hlw-rank-row{
+    display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;
+    padding:13px 20px;border-bottom:1px solid var(--hlw-line);font-size:13px;transition:.2s;
+  }
+  .hlw-rank-row:last-child{border-bottom:none}
+  .hlw-rank-row:hover{background:var(--hlw-paper)}
+  .hlw-rank-row i{font-style:normal;font-weight:800;color:var(--hlw-grey);font-size:14px}
+  .hlw-rank-row:nth-child(2) i{color:var(--hlw-red)}
+  .hlw-rank-row:nth-child(3) i{color:#d99a1f}
+  .hlw-rank-row span{line-height:1.5}
+  .hlw-rank-row small{color:var(--hlw-grey);font-size:12px;white-space:nowrap}
+
+  /* ---------- 动态/FAQ ---------- */
+  .hlw-dyn-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+  .hlw-dyn-list{display:flex;flex-direction:column;gap:0}
+  .hlw-dyn-item{
+    display:grid;grid-template-columns:88px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--hlw-line);
+  }
+  .hlw-dyn-item:first-child{padding-top:0}
+  .hlw-dyn-item time{font-size:12px;color:var(--hlw-grey);letter-spacing:.04em;padding-top:3px}
+  .hlw-dyn-item h4{font-size:15px;font-weight:700;margin-bottom:4px;line-height:1.5}
+  .hlw-dyn-item p{font-size:13px;color:#5c5f68;line-height:1.7}
+  .hlw-faq details{
+    background:#fff;border:1px solid var(--hlw-line);border-radius:12px;margin-bottom:10px;overflow:hidden;
+  }
+  .hlw-faq summary{
+    cursor:pointer;padding:15px 44px 15px 18px;font-size:14px;font-weight:600;position:relative;list-style:none;
+  }
+  .hlw-faq summary::-webkit-details-marker{display:none}
+  .hlw-faq summary::after{
+    content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);
+    font-size:18px;color:var(--hlw-red);font-weight:400;line-height:1;
+  }
+  .hlw-faq details[open] summary::after{content:"–"}
+  .hlw-faq details[open] summary{background:var(--hlw-paper)}
+  .hlw-faq details p{padding:0 18px 16px;font-size:13px;color:#5c5f68;line-height:1.85}
+
+  /* ---------- 合作 ---------- */
+  .hlw-partners{display:flex;flex-wrap:wrap;gap:12px}
+  .hlw-partners span{
+    font-size:13px;font-weight:600;color:#40424a;background:#fff;border:1px solid var(--hlw-line);
+    padding:10px 22px;border-radius:999px;letter-spacing:.04em;
+  }
+
+  /* ---------- 联系 ---------- */
+  .hlw-contact{
+    background:linear-gradient(120deg,var(--hlw-ink) 0%,#20222b 60%,#2a2320 100%);
+    color:var(--hlw-paper);border-radius:22px;padding:48px;display:grid;
+    grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;position:relative;overflow:hidden;
+  }
+  .hlw-contact::before{
+    content:"";position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,69,60,.28),transparent 68%);
+  }
+  .hlw-contact h2{font-size:clamp(22px,2.6vw,30px);font-weight:800;line-height:1.3;margin-bottom:12px}
+  .hlw-contact p{font-size:14px;color:#b9bbc3;line-height:1.85}
+  .hlw-contact-info{display:flex;flex-direction:column;gap:10px;margin-top:22px;font-size:13px;color:#d6d7dd}
+  .hlw-contact-info b{color:var(--hlw-gold);font-weight:600}
+  .hlw-contact-btns{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+  .hlw-contact-btns .hlw-btn{justify-content:center}
+
+  /* ---------- 页脚 ---------- */
+  .hlw-footer{background:var(--hlw-ink);color:#b9bbc3;padding:56px 0 28px;margin-top:0}
+  .hlw-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid var(--hlw-line-dark)}
+  .hlw-footer .hlw-logo-text strong{color:var(--hlw-paper)}
+  .hlw-footer-brand p{font-size:13px;line-height:1.9;margin-top:16px;max-width:300px;color:#94979f}
+  .hlw-footer h4{font-size:13px;color:var(--hlw-paper);font-weight:700;margin-bottom:14px;letter-spacing:.08em}
+  .hlw-footer ul{display:flex;flex-direction:column;gap:9px;font-size:13px}
+  .hlw-footer ul a{color:#94979f;transition:.2s}
+  .hlw-footer ul a:hover{color:var(--hlw-gold)}
+  .hlw-footer-bottom{
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding-top:22px;font-size:12px;color:#7b7e87;
+  }
+
+  /* ---------- 弹窗/Toast ---------- */
+  .hlw-modal{
+    position:fixed;inset:0;z-index:120;display:none;place-items:center;padding:24px;
+    background:rgba(8,8,12,.62);backdrop-filter:blur(4px);
+  }
+  .hlw-modal.is-on{display:grid}
+  .hlw-modal-box{
+    background:var(--hlw-paper);border-radius:18px;max-width:480px;width:100%;
+    padding:30px;position:relative;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);
+    max-height:86vh;overflow:auto;
+  }
+  .hlw-modal-box h3{font-size:20px;font-weight:800;margin-bottom:8px}
+  .hlw-modal-box > p{font-size:13px;color:#5c5f68;line-height:1.8;margin-bottom:18px}
+  .hlw-modal-close{
+    position:absolute;right:16px;top:16px;width:32px;height:32px;border-radius:50%;
+    background:var(--hlw-paper-2);display:grid;place-items:center;font-size:16px;color:#5c5f68;
+  }
+  .hlw-modal-close:hover{background:var(--hlw-red);color:#fff}
+  .hlw-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .hlw-field label{font-size:12px;font-weight:600;color:#40424a}
+  .hlw-field input,.hlw-field textarea{
+    border:1px solid var(--hlw-line);border-radius:10px;padding:10px 12px;font-size:13px;
+    font-family:inherit;background:#fff;outline:none;color:var(--hlw-ink);resize:vertical;
+  }
+  .hlw-field input:focus,.hlw-field textarea:focus{border-color:var(--hlw-red)}
+  .hlw-share{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .hlw-share span{
+    font-size:12px;padding:7px 16px;border-radius:999px;background:#fff;border:1px solid var(--hlw-line);cursor:pointer;
+  }
+  .hlw-share span:hover{border-color:var(--hlw-red);color:var(--hlw-red-deep)}
+  .hlw-toast{
+    position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);z-index:200;
+    background:var(--hlw-ink);color:var(--hlw-paper);font-size:13px;padding:11px 22px;border-radius:999px;
+    opacity:0;pointer-events:none;transition:.28s;box-shadow:0 16px 40px -18px rgba(0,0,0,.6);
+  }
+  .hlw-toast.is-on{opacity:1;transform:translate(-50%,0)}
+  .hlw-backtop{
+    position:fixed;right:22px;bottom:22px;z-index:90;width:44px;height:44px;border-radius:50%;
+    background:var(--hlw-ink);color:var(--hlw-paper);display:grid;place-items:center;
+    box-shadow:0 14px 30px -14px rgba(0,0,0,.6);transition:.25s;opacity:0;pointer-events:none;
+  }
+  .hlw-backtop.is-on{opacity:1;pointer-events:auto}
+  .hlw-backtop:hover{background:var(--hlw-red)}
+  .hlw-backtop svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width:1024px){
+    .hlw-hero-grid{grid-template-columns:1fr;gap:40px}
+    .hlw-about{grid-template-columns:1fr;gap:28px}
+    .hlw-about-side{position:static}
+    .hlw-focus-grid{grid-template-columns:1fr}
+    .hlw-feed{grid-template-columns:repeat(2,1fr)}
+    .hlw-creators{grid-template-columns:repeat(2,1fr)}
+    .hlw-reviews{grid-template-columns:repeat(2,1fr)}
+    .hlw-topics{grid-template-columns:repeat(2,1fr)}
+    .hlw-rank{grid-template-columns:1fr}
+    .hlw-dyn-grid{grid-template-columns:1fr;gap:32px}
+    .hlw-footer-grid{grid-template-columns:1fr 1fr}
+    .hlw-wall{grid-template-columns:repeat(4,1fr);grid-auto-rows:120px}
+    .hlw-wall-item.w-lg{grid-column:span 2}
+  }
+  @media (max-width:820px){
+    .hlw-search{display:none}
+    .hlw-nav{
+      display:none;position:absolute;left:0;right:0;top:100%;
+      background:var(--hlw-paper);border-bottom:1px solid var(--hlw-line);
+      flex-direction:column;padding:12px 24px 20px;gap:2px;
+      box-shadow:0 24px 40px -26px rgba(0,0,0,.35);
+    }
+    .hlw-nav.is-open{display:flex}
+    .hlw-nav a{padding:11px 12px;font-size:15px}
+    .hlw-header-inner{position:relative}
+    .hlw-burger{display:grid;margin-left:auto}
+    .hlw-contact{grid-template-columns:1fr;padding:34px 26px}
+    .hlw-stories{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    .hlw-section{padding:56px 0}
+    .hlw-hero{padding:44px 0 54px}
+    .hlw-stats{grid-template-columns:1fr;gap:16px}
+    .hlw-stats div{padding:0}
+    .hlw-stats div + div{border-left:none;padding-left:0;border-top:1px solid var(--hlw-line-dark);padding-top:14px}
+    .hlw-feed,.hlw-creators,.hlw-reviews,.hlw-topics{grid-template-columns:1fr}
+    .hlw-focus-side{grid-template-rows:auto}
+    .hlw-focus-mini{grid-template-columns:100px 1fr}
+    .hlw-wall{grid-template-columns:repeat(2,1fr);grid-auto-rows:128px}
+    .hlw-wall-item.w-lg{grid-column:span 2;grid-row:span 1}
+    .hlw-wall-item.w-md{grid-column:span 1}
+    .hlw-footer-grid{grid-template-columns:1fr}
+    .hlw-sec-head{flex-direction:column;align-items:flex-start;gap:14px}
+    .hlw-hero-badge{left:8px;bottom:12px}
+    .hlw-notice-more{display:none}
+    .hlw-contact{padding:28px 20px}
+    .hlw-modal-box{padding:24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶：公告条 + 页头 -->
+<div class="hlw-sticky-head">
+  <div class="hlw-notice" role="region" aria-label="最新公告">
+    <div class="hlw-notice-inner">
+      <span class="hlw-notice-tag">官方发布</span>
+      <ul class="hlw-notice-list">
+        <li><span>11-18</span> 专题《真实背后》第三集上线，走访六城记录者</li>
+        <li><span>11-16</span> 年度创作者扶持计划开放报名，名额 120 位</li>
+      </ul>
+      <a class="hlw-notice-more" href="#hlw-dynamics">全部动态 →</a>
+    </div>
+  </div>
+
+  <header class="hlw-header">
+    <div class="hlw-header-inner">
+      <a class="hlw-logo" href="#hlw-top" aria-label="极品黑料官方网站首页">
+        <span class="hlw-logo-mark" aria-hidden="true"></span>
+        <span class="hlw-logo-text">
+          <strong>极品黑料</strong>
+          <em>JIPIN HEILIAO</em>
+        </span>
+      </a>
+      <nav class="hlw-nav" id="hlw-mainnav" aria-label="主导航">
+        <a href="#hlw-top" class="is-active">首页</a>
+        <a href="#hlw-focus">焦点内容</a>
+        <a href="#hlw-topics">专题企划</a>
+        <a href="#hlw-creators">创作者</a>
+        <a href="#hlw-wall">影像墙</a>
+        <a href="#hlw-dynamics">企业动态</a>
+        <a href="#hlw-contact">联系我们</a>
+      </nav>
+      <form class="hlw-search" id="hlw-search" role="search" onsubmit="return false;">
+        <input type="search" id="hlw-search-input" placeholder="搜索纪实影像、创作者" aria-label="站内搜索">
+        <button type="submit" id="hlw-search-btn">搜索</button>
+      </form>
+      <button class="hlw-burger" id="hlw-burger" aria-label="展开导航菜单" aria-expanded="false" aria-controls="hlw-mainnav">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="hlw-wrap">
+      <p class="hlw-search-tip" id="hlw-search-tip" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+</div>
+
+<main id="hlw-top">
+
+  <!-- 首屏 -->
+  <section class="hlw-hero" aria-label="品牌首屏">
+    <div class="hlw-wrap hlw-hero-grid">
+      <div>
+        <span class="hlw-hero-kicker"><i aria-hidden="true"></i>官方 · 品牌 · 深度纪实影像平台</span>
+        <h1 class="hlw-title">极品黑料<span aria-hidden="true">·</span>记录真实</h1>
+        <p class="hlw-hero-sub">
+          作为深耕深度纪实与人物访谈领域的<b>视频品牌官方网站</b>，我们以原创、正版、高清的影像内容，搭建创作者与观众之间值得信赖的内容生态。
+        </p>
+        <div class="hlw-hero-btns">
+          <a class="hlw-btn hlw-btn-primary" href="#hlw-focus">进入焦点内容</a>
+          <a class="hlw-btn hlw-btn-ghost" href="#hlw-creators">认识创作者</a>
+          <button class="hlw-btn hlw-btn-ghost" type="button" data-hlw-open="submit">投稿与报名</button>
+        </div>
+        <div class="hlw-stats">
+          <div><b data-hlw-count="3860">0<em>+</em></b><small>原创影像条目</small></div>
+          <div><b data-hlw-count="126">0<em>位</em></b><small>签约创作者</small></div>
+          <div><b data-hlw-count="47">0<em>万</em></b><small>长期陪伴用户</small></div>
+        </div>
+      </div>
+      <div class="hlw-hero-visual">
+        <span class="hlw-hero-float">EP.03 真实背后</span>
+        <div class="hlw-hero-frame">
+          <svg viewBox="0 0 640 480" role="img" aria-label="夜色中的城市街巷纪实影片主视觉">
+            <defs>
+              <linearGradient id="hlw-heroSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1a1c26"/>
+                <stop offset="1" stop-color="#2c2320"/>
+              </linearGradient>
+              <linearGradient id="hlw-heroGlow" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e8453c" stop-opacity=".85"/>
+                <stop offset="1" stop-color="#f5c451" stop-opacity=".1"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="480" fill="url(#hlw-heroSky)"/>
+            <circle cx="470" cy="120" r="150" fill="url(#hlw-heroGlow)" opacity=".55"/>
+            <g opacity=".9">
+              <rect x="30" y="230" width="92" height="250" fill="#15161d"/>
+              <rect x="138" y="176" width="118" height="304" fill="#1d1f28"/>
+              <rect x="272" y="206" width="86" height="274" fill="#161821"/>
+              <rect x="374" y="152" width="128" height="328" fill="#1f212b"/>
+              <rect x="518" y="246" width="92" height="234" fill="#15161d"/>
+            </g>
+            <g fill="#f5c451" opacity=".8">
+              <rect x="156" y="208" width="10" height="14"/>
+              <rect x="182" y="208" width="10" height="14"/>
+              <rect x="156" y="244" width="10" height="14"/>
+              <rect x="208" y="244" width="10" height="14"/>
+              <rect x="398" y="188" width="10" height="14"/>
+              <rect x="432" y="188" width="10" height="14"/>
+              <rect x="398" y="224" width="10" height="14"/>
+              <rect x="462" y="258" width="10" height="14"/>
+              <rect x="52" y="266" width="9" height="13"/>
+              <rect x="78" y="300" width="9" height="13"/>
+              <rect x="290" y="242" width="9" height="13"/>
+            </g>
+            <rect x="0" y="392" width="640" height="88" fill="#0e0f14"/>
+            <path d="M0 402 L640 386" stroke="#32343f" stroke-width="2"/>
+            <g>
+              <rect x="300" y="330" width="44" height="66" rx="6" fill="#0f1016"/>
+              <circle cx="322" cy="352" r="11" fill="#2a2c38"/>
+              <circle cx="322" cy="352" r="4" fill="#e8453c"/>
+              <rect x="252" y="346" width="34" height="50" rx="5" fill="#0f1016"/>
+              <rect x="360" y="352" width="30" height="44" rx="5" fill="#0f1016"/>
+            </g>
+            <rect x="24" y="24" width="120" height="30" rx="4" fill="#e8453c"/>
+            <text x="38" y="45" font-size="14" fill="#ffffff" font-family="sans-serif" font-weight="bold">真实背面</text>
+            <circle cx="566" cy="410" r="34" fill="none" stroke="#f5c451" stroke-width="2" opacity=".7"/>
+            <text x="548" y="416" font-size="14" fill="#f5c451" font-family="sans-serif">EP.03</text>
+          </svg>
+        </div>
+        <div class="hlw-hero-badge">
+          <em>年度企划</em>
+          真实背后 · 第三季
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 定位解析 -->
+  <section class="hlw-section" id="hlw-about" aria-labelledby="hlw-about-title">
+    <div class="hlw-wrap">
+      <div class="hlw-about">
+        <aside class="hlw-about-side">
+          <h3 id="hlw-about-title">我们理解的“极品黑料”</h3>
+          <p>不是猎奇，也不是围观，而是把被忽略的细节、被压缩的时间、被轻视的声音，整理成可被反复观看的影像与档案。</p>
+          <div class="hlw-about-tags">
+            <span>深度纪实</span><span>人物访谈</span><span>城市观察</span><span>创作幕后</span><span>正版高清</span>
+          </div>
+        </aside>
+        <div class="hlw-about-body">
+          <p>
+            <b>极品黑料官方网站</b>定位为一家以深度纪实影像为核心的视频品牌平台。这里的“极品”指向的是对内容品质的极致要求，“黑料”指向的是影像背后那些不上台面却真实存在的细节：一段被剪掉的对话、一个眼神迟疑的半秒、一条街凌晨四点的样子。品牌自创立以来，持续以企业级的内容生产标准运营，围绕真实故事、人物访谈、城市探索与创作幕后四个方向，构建起原创、正版、高清的精品内容生态。
+          </p>
+          <p>
+            在内容结构上，品牌设有焦点内容、专题企划、创作者矩阵、影像墙与企业动态五大板块。焦点内容承担每季度的重头企划，以中长片形式呈现完整的调查与记录；专题企划围绕单一命题展开多角度创作，例如“真实背后”“城市暗面”“普通人档案”等系列；创作者矩阵引入在纪实、访谈、摄影、剪辑等垂直领域深耕的作者，让平台保持多元而稳定的更新节奏；影像墙则以更轻量的方式收集日常观察与片段式记录。
+          </p>
+          <div class="hlw-quote">
+            我们相信，真实不是刺激，而是力量。一个平台真正的口碑，来自它愿意为每一个被记录的人保留足够的尊重与耐心。
+            <em>—— 极品黑料 品牌理念</em>
+          </div>
+          <p>
+            作为一个持续运营的视频品牌，我们格外重视内容生态的长期性。企业设立了创作者扶持与内容审核双轨机制：一方面为签约作者提供选题共创、拍摄支持与后期协作；另一方面坚持正版素材、规范授权与隐私保护，避免以牺牲当事人权益换取流量。这种取舍在短期内或许不够“热闹”，却让平台在行业内部积累了相对扎实的口碑，也让用户在长期陪伴中形成稳定的观看习惯。
+          </p>
+          <p>
+            在技术层面，我们提供适配多终端的播放体验、清晰的章节标记与可检索的内容档案，帮助观众从一个片段进入，逐步理解完整的叙事脉络。同时，官方定期发布内容更新日志与企业动态，让创作过程本身也成为可以被观看的部分。我们希望通过这样一套由内容、创作者与用户共同维护的机制，让“极品黑料”成为一个值得信赖的、有影响力的纪实影像品牌，而不是一次性的流量容器。
+          </p>
+          <p>
+            面向未来，品牌将继续在垂直领域深耕：推进年度专题的拍摄计划，扩大城市观察的样本范围，完善创作者培训与作品孵化链路，并在社会责任层面持续投入，记录更多普通人的成长与陪伴。我们欢迎每一位对真实影像抱有热情的创作者与观众加入社区，一起把“被看见”这件事，做得更专业、更温暖、更有耐心。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="hlw-section alt" id="hlw-focus" aria-labelledby="hlw-focus-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">FOCUS / 焦点内容</span>
+          <h2 class="hlw-h2" id="hlw-focus-title">本季重头影像，先看这三部</h2>
+          <p class="hlw-sec-desc">由品牌编辑部与签约创作者共同完成，聚焦真实故事与人物处境，每部均为原创正版内容。</p>
+        </div>
+        <a class="hlw-sec-link" href="#hlw-feed">查看视频流 →</a>
+      </div>
+      <div class="hlw-focus-grid">
+        <article class="hlw-focus-main">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 640 480" role="img" aria-label="凌晨四点城市街巷调查纪实封面">
+              <defs>
+                <linearGradient id="hlw-f1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#14161f"/>
+                  <stop offset="1" stop-color="#33222a"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="480" fill="url(#hlw-f1)"/>
+              <g stroke="#3a3d4b" stroke-width="1.5" opacity=".9">
+                <line x1="0" y1="330" x2="640" y2="300"/>
+                <line x1="0" y1="360" x2="640" y2="336"/>
+              </g>
+              <rect x="60" y="120" width="180" height="230" fill="#1c1e28"/>
+              <rect x="256" y="88" width="150" height="262" fill="#23252f"/>
+              <rect x="422" y="146" width="160" height="204" fill="#1a1c25"/>
+              <g fill="#e8453c" opacity=".85">
+                <rect x="86" y="150" width="26" height="8"/>
+                <rect x="278" y="120" width="30" height="8"/>
+                <rect x="450" y="176" width="24" height="8"/>
+              </g>
+              <g fill="#f5c451" opacity=".75">
+                <rect x="86" y="184" width="12" height="16"/>
+                <rect x="118" y="184" width="12" height="16"/>
+                <rect x="278" y="152" width="12" height="16"/>
+                <rect x="314" y="152" width="12" height="16"/>
+                <rect x="450" y="208" width="12" height="16"/>
+                <rect x="486" y="208" width="12" height="16"/>
+              </g>
+              <circle cx="500" cy="90" r="56" fill="#e8453c" opacity=".26"/>
+              <text x="60" y="426" font-size="15" fill="#f5c451" font-family="sans-serif" letter-spacing="3">MIDNIGHT RECORD</text>
+            </svg>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-focus-main-body">
+            <div class="hlw-tagrow">
+              <span class="hlw-tag solid">年度企划</span>
+              <span class="hlw-tag">城市探索</span>
+              <span class="hlw-tag">深度访谈</span>
+            </div>
+            <h3>《城四点的灯》：三个夜班人的十二小时</h3>
+            <p>跟随便利店店员、环卫班长与代驾司机，记录一座城市在凌晨四点最安静也最真实的样子。全片 46 分钟，独家访谈素材。</p>
+            <div class="hlw-meta">
+              <span>导演 <b>林望</b></span><span>2026-11-18 发布</span><span>播放 <b>12.6 万</b></span><span>收藏 <b>8,402</b></span>
+            </div>
+          </div>
+        </article>
+        <div class="hlw-focus-side">
+          <article class="hlw-focus-mini">
+            <div class="hlw-cover">
+              <svg viewBox="0 0 240 240" role="img" aria-label="旧工厂改造访谈现场封面">
+                <defs>
+                  <linearGradient id="hlw-f2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#2a2018"/>
+                    <stop offset="1" stop-color="#4b3220"/>
+                  </linearGradient>
+                </defs>
+                <rect width="240" height="240" fill="url(#hlw-f2)"/>
+                <g fill="#1c1712">
+                  <rect x="20" y="120" width="52" height="120"/>
+                  <rect x="88" y="84" width="60" height="156"/>
+                  <rect x="164" y="134" width="56" height="106"/>
+                </g>
+                <g fill="#f5c451" opacity=".85">
+                  <rect x="34" y="140" width="10" height="14"/>
+                  <rect x="60" y="140" width="10" height="14"/>
+                  <rect x="104" y="106" width="12" height="16"/>
+                  <rect x="128" y="106" width="12" height="16"/>
+                  <rect x="178" y="154" width="10" height="14"/>
+                </g>
+                <circle cx="120" cy="52" r="24" fill="#e8453c" opacity=".8"/>
+                <text x="20" y="226" font-size="12" fill="#e8dfc8" font-family="sans-serif">INTERVIEW 07</text>
+              </svg>
+            </div>
+            <div class="hlw-focus-mini-body">
+              <span>人物访谈</span>
+              <h4>旧厂房里的第七次谈话：一位手艺人选择留下</h4>
+              <small>时长 22:16 · 1.8 万次播放</small>
+            </div>
+          </article>
+          <article class="hlw-focus-mini">
+            <div class="hlw-cover">
+              <svg viewBox="0 0 240 240" role="img" aria-label="雨夜车站观察短片封面">
+                <defs>
+                  <linearGradient id="hlw-f3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#12202b"/>
+                    <stop offset="1" stop-color="#1f3742"/>
+                  </linearGradient>
+                </defs>
+                <rect width="240" height="240" fill="url(#hlw-f3)"/>
+                <g stroke="#5d8a99" stroke-width="1.4" opacity=".7">
+                  <line x1="20" y1="0" x2="60" y2="110"/>
+                  <line x1="70" y1="0" x2="104" y2="110"/>
+                  <line x1="130" y1="0" x2="150" y2="110"/>
+                  <line x1="180" y1="0" x2="196" y2="110"/>
+                </g>
+                <rect x="0" y="150" width="240" height="90" fill="#0c161d"/>
+                <rect x="24" y="126" width="192" height="26" rx="4" fill="#22343e"/>
+                <circle cx="60" cy="200" r="16" fill="#f5c451" opacity=".8"/>
+                <circle cx="180" cy="200" r="16" fill="#e8453c" opacity=".8"/>
+                <text x="24" y="112" font-size="12" fill="#9fc3d1" font-family="sans-serif">RAIN / 21:40</text>
+              </svg>
+            </div>
+            <div class="hlw-focus-mini-body">
+              <span>日常记录</span>
+              <h4>雨夜车站：等最后一班车的人都在想什么</h4>
+              <small>时长 14:02 · 2.3 万次播放</small>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 视频流 -->
+  <section class="hlw-section" id="hlw-feed" aria-labelledby="hlw-feed-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">VIDEO / 热门视频流</span>
+          <h2 class="hlw-h2" id="hlw-feed-title">社区正在讨论的六部影像</h2>
+          <p class="hlw-sec-desc">按标签筛选想看的题材，点赞与收藏会即时记录你的偏好。</p>
+        </div>
+        <a class="hlw-sec-link" href="#hlw-rank">查看热度榜单 →</a>
+      </div>
+      <div class="hlw-filter" role="group" aria-label="视频标签筛选">
+        <button type="button" class="is-active" data-hlw-filter="all">全部</button>
+        <button type="button" data-hlw-filter="访谈">人物访谈</button>
+        <button type="button" data-hlw-filter="城市">城市探索</button>
+        <button type="button" data-hlw-filter="幕后">创作幕后</button>
+        <button type="button" data-hlw-filter="技巧">实用技巧</button>
+      </div>
+      <div class="hlw-feed" id="hlw-feed-list">
+
+        <article class="hlw-card" data-hlw-cat="访谈">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="深夜面馆老板访谈视频封面">
+              <defs><linearGradient id="hlw-c1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b1c14"/><stop offset="1" stop-color="#5a3220"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#hlw-c1)"/>
+              <circle cx="250" cy="52" r="34" fill="#f5c451" opacity=".55"/>
+              <rect x="0" y="116" width="320" height="64" fill="#170f0a"/>
+              <rect x="40" y="92" width="80" height="44" rx="6" fill="#3a2418"/>
+              <rect x="52" y="100" width="56" height="6" rx="3" fill="#a3653a"/>
+              <rect x="52" y="112" width="40" height="5" rx="2.5" fill="#7a4a2a"/>
+              <rect x="180" y="80" width="60" height="56" rx="8" fill="#241610"/>
+              <circle cx="210" cy="104" r="12" fill="#e8453c" opacity=".8"/>
+              <text x="18" y="30" font-size="12" fill="#f2d9b0" font-family="sans-serif">NOODLE / 01</text>
+            </svg>
+            <span class="hlw-cover-badge">人物访谈</span>
+            <span class="hlw-cover-dur">18:42</span>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-card-body">
+            <h3>开面馆的第二十年，他说最怕客人夸好吃</h3>
+            <p>凌晨收摊后的四十分钟长谈，关于一碗面、一间铺子和一个不想被记住的名字。</p>
+            <div class="hlw-card-meta">
+              <span class="hlw-avatar" style="background:#c22e26">周</span>
+              <span>周叙白</span><span>·</span><span>3.4 万播放</span>
+            </div>
+            <div class="hlw-card-actions">
+              <button class="hlw-act" type="button" data-hlw-like><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7a4 4 0 0 1 7 3.6C19 15.4 12 20 12 20z"/></svg><span>点赞</span></button>
+              <button class="hlw-act" type="button" data-hlw-fav><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg><span>收藏</span></button>
+              <button class="hlw-act" type="button" data-hlw-share>分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="hlw-card" data-hlw-cat="城市">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="老城区天台俯瞰城市短片封面">
+              <defs><linearGradient id="hlw-c2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2a3a"/><stop offset="1" stop-color="#3f5868"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#hlw-c2)"/>
+              <g fill="#16212c">
+                <rect x="10" y="96" width="46" height="84"/>
+                <rect x="66" y="70" width="54" height="110"/>
+                <rect x="130" y="110" width="40" height="70"/>
+                <rect x="180" y="58" width="62" height="122"/>
+                <rect x="252" y="102" width="58" height="78"/>
+              </g>
+              <g fill="#f5c451" opacity=".8">
+                <rect x="26" y="112" width="7" height="9"/><rect x="44" y="112" width="7" height="9"/>
+                <rect x="82" y="88" width="8" height="10"/><rect x="102" y="88" width="8" height="10"/>
+                <rect x="196" y="76" width="9" height="11"/><rect x="220" y="76" width="9" height="11"/>
+                <rect x="268" y="120" width="8" height="10"/><rect x="288" y="120" width="8" height="10"/>
+              </g>
+              <path d="M0 152 L320 140" stroke="#6c8b9c" stroke-width="2"/>
+              <text x="16" y="28" font-size="11" fill="#c9dbe4" font-family="sans-serif">ROOFTOP VIEW</text>
+            </svg>
+            <span class="hlw-cover-badge">城市探索</span>
+            <span class="hlw-cover-dur">09:58</span>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-card-body">
+            <h3>爬上三十七层天台，看老城区如何慢慢亮起来</h3>
+            <p>从日落前十五分钟到全城灯火，用一镜到底记录一个片区的呼吸节奏与烟火气。</p>
+            <div class="hlw-card-meta">
+              <span class="hlw-avatar" style="background:#2f6f8a">方</span>
+              <span>方屿</span><span>·</span><span>5.1 万播放</span>
+            </div>
+            <div class="hlw-card-actions">
+              <button class="hlw-act" type="button" data-hlw-like><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7a4 4 0 0 1 7 3.6C19 15.4 12 20 12 20z"/></svg><span>点赞</span></button>
+              <button class="hlw-act" type="button" data-hlw-fav><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg><span>收藏</span></button>
+              <button class="hlw-act" type="button" data-hlw-share>分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="hlw-card" data-hlw-cat="幕后">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="纪录片剪辑室幕后工作视频封面">
+              <defs><linearGradient id="hlw-c3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1626"/><stop offset="1" stop-color="#332a4a"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#hlw-c3)"/>
+              <rect x="42" y="34" width="148" height="90" rx="6" fill="#0f0d17"/>
+              <rect x="52" y="44" width="128" height="62" rx="3" fill="#252041"/>
+              <g fill="#e8453c" opacity=".85">
+                <rect x="62" y="56" width="40" height="6" rx="3"/>
+                <rect x="62" y="70" width="72" height="5" rx="2.5"/>
+              </g>
+              <g fill="#f5c451" opacity=".8">
+                <rect x="62" y="84" width="56" height="5" rx="2.5"/>
+              </g>
+              <rect x="42" y="130" width="148" height="7" rx="3.5" fill="#2c2547"/>
+              <circle cx="86" cy="133" r="7" fill="#e8453c"/>
+              <circle cx="200" cy="133" r="5" fill="#f5c451" opacity=".8"/>
+              <g stroke="#4b3f6e" stroke-width="2">
+                <line x1="224" y1="40" x2="224" y2="140"/>
+                <line x1="252" y1="58" x2="252" y2="140"/>
+                <line x1="280" y1="30" x2="280" y2="140"/>
+              </g>
+              <text x="42" y="170" font-size="11" fill="#b9aed8" font-family="sans-serif">EDIT ROOM / TAKE 12</text>
+            </svg>
+            <span class="hlw-cover-badge">创作幕后</span>
+            <span class="hlw-cover-dur">13:27</span>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-card-body">
+            <h3>一条十分钟短片，为什么剪了十二版</h3>
+            <p>剪辑师把被舍弃的版本摊开来讲：节奏、呼吸与信息密度的取舍，往往比镜头更关键。</p>
+            <div class="hlw-card-meta">
+              <span class="hlw-avatar" style="background:#6b4fb3">柯</span>
+              <span>柯以宁</span><span>·</span><span>2.7 万播放</span>
+            </div>
+            <div class="hlw-card-actions">
+              <button class="hlw-act" type="button" data-hlw-like><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7a4 4 0 0 1 7 3.6C19 15.4 12 20 12 20z"/></svg><span>点赞</span></button>
+              <button class="hlw-act" type="button" data-hlw-fav><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg><span>收藏</span></button>
+              <button class="hlw-act" type="button" data-hlw-share>分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="hlw-card" data-hlw-cat="技巧">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="手持拍摄稳定技巧教学封面">
+              <defs><linearGradient id="hlw-c4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17251f"/><stop offset="1" stop-color="#2d4a39"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#hlw-c4)"/>
+              <g fill="none" stroke="#7fc79b" stroke-width="2" opacity=".85">
+                <rect x="90" y="52" width="140" height="80" rx="10"/>
+                <circle cx="160" cy="92" r="22"/>
+                <line x1="160" y1="34" x2="160" y2="52"/>
+                <line x1="160" y1="132" x2="160" y2="150"/>
+                <line x1="72" y1="92" x2="90" y2="92"/>
+                <line x1="230" y1="92" x2="248" y2="92"/>
+              </g>
+              <g fill="#f5c451" opacity=".9">
+                <circle cx="160" cy="92" r="6"/>
+              </g>
+              <text x="16" y="28" font-size="12" fill="#a9d8bd" font-family="sans-serif">HOW TO / 001</text>
+              <g stroke="#2f5a42" stroke-width="1.5" opacity=".8">
+                <line x1="0" y1="160" x2="320" y2="160"/>
+              </g>
+            </svg>
+            <span class="hlw-cover-badge">实用技巧</span>
+            <span class="hlw-cover-dur">07:44</span>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-card-body">
+            <h3>花最少的设备，拍最稳的街头素材</h3>
+            <p>从走位、呼吸到临时支点，六个马上能用的小方法，适合刚入门的记录者。</p>
+            <div class="hlw-card-meta">
+              <span class="hlw-avatar" style="background:#2f9e6e">曾</span>
+              <span>曾禾</span><span>·</span><span>4.2 万播放</span>
+            </div>
+            <div class="hlw-card-actions">
+              <button class="hlw-act" type="button" data-hlw-like><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7a4 4 0 0 1 7 3.6C19 15.4 12 20 12 20z"/></svg><span>点赞</span></button>
+              <button class="hlw-act" type="button" data-hlw-fav><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg><span>收藏</span></button>
+              <button class="hlw-act" type="button" data-hlw-share>分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="hlw-card" data-hlw-cat="访谈">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="社区志愿者访谈封面">
+              <defs><linearGradient id="hlw-c5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b1f2c"/><stop offset="1" stop-color="#5c3a4e"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#hlw-c5)"/>
+              <circle cx="160" cy="78" r="34" fill="#e8a9b8" opacity=".55"/>
+              <path d="M160 112 c-32 0 -54 22 -54 54 h108 c0 -32 -22 -54 -54 -54z" fill="#3c2534"/>
+              <circle cx="160" cy="78" r="22" fill="#231520"/>
+              <g fill="#f5c451" opacity=".85">
+                <circle cx="66" cy="42" r="10"/>
+                <circle cx="256" cy="52" r="7"/>
+                <circle cx="238" cy="30" r="4"/>
+              </g>
+              <text x="16" y="28" font-size="12" fill="#e5c0cf" font-family="sans-serif">NEIGHBOR 02</text>
+            </svg>
+            <span class="hlw-cover-badge">人物访谈</span>
+            <span class="hlw-cover-dur">21:05</span>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-card-body">
+            <h3>她在社区做了九年志愿者，从没上过镜</h3>
+            <p>第一次面对镜头，她讲起那些被忽略的小事：一盏灯、一把伞和一句“我在”。</p>
+            <div class="hlw-card-meta">
+              <span class="hlw-avatar" style="background:#a5487a">苏</span>
+              <span>苏晚</span><span>·</span><span>6.8 万播放</span>
+            </div>
+            <div class="hlw-card-actions">
+              <button class="hlw-act" type="button" data-hlw-like><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7a4 4 0 0 1 7 3.6C19 15.4 12 20 12 20z"/></svg><span>点赞</span></button>
+              <button class="hlw-act" type="button" data-hlw-fav><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg><span>收藏</span></button>
+              <button class="hlw-act" type="button" data-hlw-share>分享</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="hlw-card" data-hlw-cat="城市">
+          <div class="hlw-cover">
+            <svg viewBox="0 0 320 180" role="img" aria-label="菜市场清晨记录视频封面">
+              <defs><linearGradient id="hlw-c6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2a14"/><stop offset="1" stop-color="#6b4a22"/></linearGradient></defs>
+              <rect width="320" height="180" fill="url(#hlw-c6)"/>
+              <g fill="#2a1d0e">
+                <rect x="0" y="88" width="320" height="92"/>
+              </g>
+              <g fill="#8a5a26">
+                <rect x="22" y="96" width="68" height="12" rx="4"/>
+                <rect x="112" y="96" width="68" height="12" rx="4"/>
+                <rect x="202" y="96" width="68" height="12" rx="4"/>
+              </g>
+              <g fill="#e8453c" opacity=".8">
+                <circle cx="46" cy="80" r="9"/><circle cx="68" cy="80" r="9"/><circle cx="56" cy="66" r="8"/>
+              </g>
+              <g fill="#f5c451" opacity=".85">
+                <circle cx="136" cy="80" r="9"/><circle cx="158" cy="80" r="9"/><circle cx="226" cy="80" r="9"/>
+              </g>
+              <g fill="#7fc79b" opacity=".85">
+                <rect x="248" y="66" width="16" height="24" rx="8"/>
+              </g>
+              <text x="16" y="28" font-size="12" fill="#f0d9b0" font-family="sans-serif">MARKET / 06:10</text>
+            </svg>
+            <span class="hlw-cover-badge">城市探索</span>
+            <span class="hlw-cover-dur">11:36</span>
+            <div class="hlw-cover-play"><i aria-hidden="true"></i></div>
+          </div>
+          <div class="hlw-card-body">
+            <h3>六点十分的老菜场，比任何会议室都清醒</h3>
+            <p>跟着三位摊主过一个早晨，听他们讲生意、讲孩子，也讲对这个片区的留恋。</p>
+            <div class="hlw-card-meta">
+              <span class="hlw-avatar" style="background:#b8781f">章</span>
+              <span>章栖</span><span>·</span><span>3.9 万播放</span>
+            </div>
+            <div class="hlw-card-actions">
+              <button class="hlw-act" type="button" data-hlw-like><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7a4 4 0 0 1 7 3.6C19 15.4 12 20 12 20z"/></svg><span>点赞</span></button>
+              <button class="hlw-act" type="button" data-hlw-fav><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-4-6 4z"/></svg><span>收藏</span></button>
+              <button class="hlw-act" type="button" data-hlw-share>分享</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <p class="hlw-empty" id="hlw-feed-empty">该标签下暂无内容，换个标签试试，或前往专题企划浏览往期影像。</p>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section class="hlw-section alt" id="hlw-topics" aria-labelledby="hlw-topics-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">SERIES / 专题企划</span>
+          <h2 class="hlw-h2" id="hlw-topics-title">四个长期专题，持续更新中</h2>
+          <p class="hlw-sec-desc">每个专题由品牌编辑部发起，联合多位创作者共同完成，形成可持续追踪的内容档案。</p>
+        </div>
+        <a class="hlw-sec-link" href="#hlw-contact">合作提案 →</a>
+      </div>
+      <div class="hlw-topics">
+        <article class="hlw-topic">
+          <div class="hlw-topic-state"><i aria-hidden="true"></i>更新中 · 第 3 季</div>
+          <h3>真实背后</h3>
+          <p>走进影像之外的现场，记录拍摄对象在镜头关闭之后的生活状态，追问“被记录”本身意味着什么。</p>
+          <div class="hlw-topic-foot"><span>已上线 18 集</span><span>每周四更新</span></div>
+        </article>
+        <article class="hlw-topic">
+          <div class="hlw-topic-state"><i aria-hidden="true"></i>更新中 · 第 2 季</div>
+          <h3>城市暗面</h3>
+          <p>不拍地标，只拍缝隙：夜班、后巷、临时工棚与末班地铁，呈现城市运转的另一种时间表。</p>
+          <div class="hlw-topic-foot"><span>已上线 12 集</span><span>双周更新</span></div>
+        </article>
+        <article class="hlw-topic">
+          <div class="hlw-topic-state done"><i aria-hidden="true"></i>已完结 · 全 9 集</div>
+          <h3>普通人档案</h3>
+          <p>以档案体形式记录九位普通人的日常，一人一集，不设旁白，只保留现场声与环境音。</p>
+          <div class="hlw-topic-foot"><span>累计播放 46 万</span><span>可整季回看</span></div>
+        </article>
+        <article class="hlw-topic">
+          <div class="hlw-topic-state"><i aria-hidden="true"></i>征集中 · 第 1 季</div>
+          <h3>创作者的十二小时</h3>
+          <p>面向社区公开征集，记录一位创作者从起床到收工的真实一天，入选作品将获得官方联合推广。</p>
+          <div class="hlw-topic-foot"><span>报名截止 12-20</span><span>开放投稿</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="hlw-section dark" id="hlw-creators" aria-labelledby="hlw-creators-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">CREATORS / 创作者矩阵</span>
+          <h2 class="hlw-h2" id="hlw-creators-title">在垂直领域深耕的记录者</h2>
+          <p class="hlw-sec-desc">他们是平台内容生态的核心，也是这个社区最稳定的更新来源。</p>
+        </div>
+        <a class="hlw-sec-link" href="#hlw-contact">申请入驻 →</a>
+      </div>
+      <div class="hlw-creators">
+        <article class="hlw-creator">
+          <span class="hlw-avatar" style="background:#c22e26">林</span>
+          <h3>林望</h3>
+          <span class="hlw-creator-field">深度纪实 · 导演</span>
+          <p>擅长中长片叙事与现场调度，长期关注城市夜班群体，作品节奏克制、信息密度高。</p>
+          <div class="hlw-creator-nums"><span>作品 <b>64</b></span><span>关注 <b>8.2 万</b></span></div>
+          <button class="hlw-creator-more" type="button" data-hlw-open="creator" data-hlw-name="林望" data-hlw-field="深度纪实 · 导演">查看档案 →</button>
+        </article>
+        <article class="hlw-creator">
+          <span class="hlw-avatar" style="background:#2f6f8a">方</span>
+          <h3>方屿</h3>
+          <span class="hlw-creator-field">城市探索 · 摄影</span>
+          <p>偏好自然光与长镜头，用固定机位观察城市变化，作品常被用于城市影像研究课程。</p>
+          <div class="hlw-creator-nums"><span>作品 <b>91</b></span><span>关注 <b>6.5 万</b></span></div>
+          <button class="hlw-creator-more" type="button" data-hlw-open="creator" data-hlw-name="方屿" data-hlw-field="城市探索 · 摄影">查看档案 →</button>
+        </article>
+        <article class="hlw-creator">
+          <span class="hlw-avatar" style="background:#6b4fb3">柯</span>
+          <h3>柯以宁</h3>
+          <span class="hlw-creator-field">创作幕后 · 剪辑</span>
+          <p>专注叙事结构调整与声音设计，善于把复杂素材整理成清晰的观看路径，教学系列口碑突出。</p>
+          <div class="hlw-creator-nums"><span>作品 <b>47</b></span><span>关注 <b>5.1 万</b></span></div>
+          <button class="hlw-creator-more" type="button" data-hlw-open="creator" data-hlw-name="柯以宁" data-hlw-field="创作幕后 · 剪辑">查看档案 →</button>
+        </article>
+        <article class="hlw-creator">
+          <span class="hlw-avatar" style="background:#a5487a">苏</span>
+          <h3>苏晚</h3>
+          <span class="hlw-creator-field">人物访谈 · 主持</span>
+          <p>提问温和而有耐心，擅长让受访者在长时间对话中逐渐放松，代表作《普通人档案》。</p>
+          <div class="hlw-creator-nums"><span>作品 <b>38</b></span><span>关注 <b>9.4 万</b></span></div>
+          <button class="hlw-creator-more" type="button" data-hlw-open="creator" data-hlw-name="苏晚" data-hlw-field="人物访谈 · 主持">查看档案 →</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 故事随笔 + 作品墙 -->
+  <section class="hlw-section" id="hlw-wall" aria-labelledby="hlw-wall-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">STORY / 故事与影像</span>
+          <h2 class="hlw-h2" id="hlw-wall-title">拍摄之外，我们也写字</h2>
+          <p class="hlw-sec-desc">两篇创作者随笔，加上一面来自社区的影像墙，构成这个品牌更日常的一面。</p>
+        </div>
+        <a class="hlw-sec-link" href="#hlw-feed">回到视频流 →</a>
+      </div>
+
+      <div class="hlw-stories" style="margin-bottom:36px">
+        <article class="hlw-story">
+          <div class="hlw-story-head">
+            <span class="hlw-avatar" style="background:#2f9e6e">曾</span>
+            <small>曾禾 · 2026-11-15 · 创作手记</small>
+          </div>
+          <h3>把机器架低一点，世界会变得不一样</h3>
+          <p>我第一次拍菜市场时，所有镜头都是站着的视角，画面很干净，但也很空。后来我把机器放到膝盖高度，人群的腿、拖车的轮子、落在地上的菜叶一起涌进来，那个地方才第一次“活”了。这期技巧片里我讲了六个稳定方法，其实最重要的一个没有讲：先蹲下来，再决定要不要按录制键。</p>
+          <div class="hlw-story-marks"><span>实用技巧</span><span>城市探索</span><span>拍摄视角</span></div>
+        </article>
+        <article class="hlw-story">
+          <div class="hlw-story-head">
+            <span class="hlw-avatar" style="background:#a5487a">苏</span>
+            <small>苏晚 · 2026-11-09 · 访谈背后</small>
+          </div>
+          <h3>她说“不用拍我”，但那天我们聊了四个小时</h3>
+          <p>很多人第一次面对镜头都会本能地拒绝。那天我没有拿出设备，只是坐着听她讲社区里的事，从一盏坏掉的路灯讲到一位独居老人。四个小时之后，她自己说：那就拍吧，但不要拍我哭。最后成片里保留了她唯一一次沉默的十一秒，我觉得那十一秒比任何台词都更有力量。</p>
+          <div class="hlw-story-marks"><span>人物访谈</span><span>真实故事</span><span>社区</span></div>
+        </article>
+      </div>
+
+      <h3 style="font-size:18px;font-weight:800;margin-bottom:16px">社区影像墙 · 本季精选</h3>
+      <div class="hlw-wall">
+        <figure class="hlw-wall-item w-lg">
+          <svg viewBox="0 0 400 300" role="img" aria-label="傍晚江边散步的人群影像">
+            <defs><linearGradient id="hlw-w1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3b07a"/><stop offset="1" stop-color="#8a4a52"/></linearGradient></defs>
+            <rect width="400" height="300" fill="url(#hlw-w1)"/>
+            <circle cx="300" cy="86" r="42" fill="#fbe3b8" opacity=".85"/>
+            <rect x="0" y="196" width="400" height="104" fill="#5b3543"/>
+            <path d="M0 196 Q100 176 200 196 T400 196 V220 H0Z" fill="#6d4450"/>
+            <g fill="#35202a">
+              <rect x="52" y="140" width="14" height="56" rx="7"/>
+              <rect x="104" y="152" width="12" height="44" rx="6"/>
+              <rect x="92" y="170" width="12" height="30" rx="6"/>
+              <rect x="240" y="146" width="14" height="50" rx="7"/>
+              <rect x="292" y="158" width="12" height="38" rx="6"/>
+            </g>
+            <text x="20" y="34" font-size="14" fill="#fff5e6" font-family="sans-serif" letter-spacing="2">RIVERSIDE / 18:20</text>
+          </svg>
+          <figcaption>傍晚六点的江边，散步的人逐渐多起来</figcaption>
+        </figure>
+        <figure class="hlw-wall-item w-md">
+          <svg viewBox="0 0 300 200" role="img" aria-label="老楼楼梯间光影影像">
+            <rect width="300" height="200" fill="#20242e"/>
+            <g fill="#2c313d">
+              <rect x="0" y="0" width="300" height="26"/><rect x="0" y="52" width="300" height="26"/>
+              <rect x="0" y="104" width="300" height="26"/><rect x="0" y="156" width="300" height="26"/>
+            </g>
+            <polygon points="190,0 300,0 300,200 120,200" fill="#f5c451" opacity=".2"/>
+            <polygon points="220,0 268,0 176,200 128,200" fill="#f5c451" opacity=".28"/>
+            <text x="16" y="188" font-size="11" fill="#a9adba" font-family="sans-serif">STAIRS / 15:42</text>
+          </svg>
+          <figcaption>楼梯间三点的光，落在第七级台阶</figcaption>
+        </figure>
+        <figure class="hlw-wall-item w-sm">
+          <svg viewBox="0 0 200 200" role="img" aria-label="窗台绿植特写影像">
+            <rect width="200" height="200" fill="#e8e2d3"/>
+            <rect x="0" y="132" width="200" height="68" fill="#c9bfa8"/>
+            <rect x="62" y="118" width="76" height="24" rx="4" fill="#a8703f"/>
+            <g fill="#4f7a56">
+              <ellipse cx="86" cy="98" rx="16" ry="26" transform="rotate(-18 86 98)"/>
+              <ellipse cx="110" cy="90" rx="14" ry="30" transform="rotate(12 110 90)"/>
+              <ellipse cx="98" cy="76" rx="12" ry="22"/>
+            </g>
+            <circle cx="150" cy="46" r="20" fill="#f0b64c" opacity=".7"/>
+          </svg>
+          <figcaption>窗台新叶</figcaption>
+        </figure>
+        <figure class="hlw-wall-item w-sm">
+          <svg viewBox="0 0 200 200" role="img" aria-label="夜市灯串特写影像">
+            <rect width="200" height="200" fill="#171a24"/>
+            <g stroke="#3a3f4e" stroke-width="2" fill="none">
+              <path d="M0 60 Q100 110 200 60"/>
+              <path d="M0 118 Q100 168 200 118"/>
+            </g>
+            <g fill="#f5c451">
+              <circle cx="40" cy="82" r="6"/><circle cx="84" cy="96" r="6"/><circle cx="130" cy="94" r="6"/>
+              <circle cx="174" cy="78" r="6"/><circle cx="56" cy="140" r="5"/><circle cx="146" cy="140" r="5"/>
+            </g>
+            <g fill="#e8453c">
+              <circle cx="106" cy="102" r="5"/><circle cx="100" cy="148" r="4"/>
+            </g>
+            <text x="14" y="186" font-size="11" fill="#7f8496" font-family="sans-serif">NIGHT MARKET</text>
+          </svg>
+          <figcaption>夜市灯串</figcaption>
+        </figure>
+        <figure class="hlw-wall-item w-md">
+          <svg viewBox="0 0 300 200" role="img" aria-label="雨天车窗倒影影像">
+            <rect width="300" height="200" fill="#2a3a44"/>
+            <g fill="#3d5661" opacity=".9">
+              <rect x="0" y="118" width="300" height="82"/>
+            </g>
+            <g fill="#9fd0dd" opacity=".55">
+              <circle cx="60" cy="60" r="4"/><circle cx="92" cy="86" r="3"/><circle cx="130" cy="46" r="5"/>
+              <circle cx="180" cy="76" r="4"/><circle cx="228" cy="52" r="3"/><circle cx="258" cy="98" r="5"/>
+            </g>
+            <g fill="#f5c451" opacity=".7">
+              <ellipse cx="150" cy="160" rx="52" ry="10"/>
+            </g>
+            <text x="16" y="188" font-size="11" fill="#bcdde6" font-family="sans-serif">RAIN WINDOW</text>
+          </svg>
+          <figcaption>雨里的车窗，像一块会流动的屏幕</figcaption>
+        </figure>
+        <figure class="hlw-wall-item w-sm">
+          <svg viewBox="0 0 200 200" role="img" aria-label="旧书摊细节影像">
+            <rect width="200" height="200" fill="#efe6d2"/>
+            <g fill="#b89464">
+              <rect x="24" y="120" width="152" height="16" rx="3"/>
+            </g>
+            <g>
+              <rect x="34" y="70" width="20" height="50" fill="#9c4a3c" transform="rotate(-6 44 95)"/>
+              <rect x="60" y="76" width="18" height="44" fill="#43646b" transform="rotate(4 69 98)"/>
+              <rect x="84" y="68" width="22" height="52" fill="#c19a3e" transform="rotate(-3 95 94)"/>
+              <rect x="112" y="78" width="18" height="42" fill="#5f5040" transform="rotate(7 121 99)"/>
+              <rect x="136" y="72" width="20" height="48" fill="#3f6b52" transform="rotate(-4 146 96)"/>
+            </g>
+            <circle cx="170" cy="42" r="14" fill="#e8453c" opacity=".5"/>
+          </svg>
+          <figcaption>旧书摊的下午</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 + 榜单 -->
+  <section class="hlw-section alt" id="hlw-rank" aria-labelledby="hlw-rank-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">VOICE / 社区声音</span>
+          <h2 class="hlw-h2" id="hlw-rank-title">用户怎么说，数据怎么排</h2>
+          <p class="hlw-sec-desc">口碑来自长期观看，热度来自真实互动，两者我们分开统计、公开呈现。</p>
+        </div>
+      </div>
+
+      <div class="hlw-reviews" style="margin-bottom:36px">
+        <article class="hlw-review">
+          <p>看《城四点的灯》那晚正好加班到很晚，开头那段没台词的街景让我停了很久。这个平台很克制，不煽情，这点很难得。</p>
+          <div class="hlw-review-head"><span class="hlw-avatar" style="background:#c22e26">L</span><div><b>陆小舟</b><small>普通用户 · 关注 2 年</small></div></div>
+          <div class="hlw-review-stars">★★★★★</div>
+        </article>
+        <article class="hlw-review">
+          <p>作为纪录片专业的学生，我几乎把创作幕后系列看完了。剪辑那两期讲得很实在，没有空话，对做作业帮助很大。</p>
+          <div class="hlw-review-head"><span class="hlw-avatar" style="background:#2f6f8a">W</span><div><b>吴同学</b><small>创作者 · 学生</small></div></div>
+          <div class="hlw-review-stars">★★★★★</div>
+        </article>
+        <article class="hlw-review">
+          <p>投稿流程比想象中顺，编辑部回复也具体，不是模板化那种。虽然第一次没入选，但给了修改建议，还是很感谢。</p>
+          <div class="hlw-review-head"><span class="hlw-avatar" style="background:#2f9e6e">陈</span><div><b>陈默</b><small>投稿作者</small></div></div>
+          <div class="hlw-review-stars">★★★★☆</div>
+        </article>
+        <article class="hlw-review">
+          <p>影像墙是我每周都会来看的地方，更新不算特别快，但质量稳定。喜欢这种不急的平台。</p>
+          <div class="hlw-review-head"><span class="hlw-avatar" style="background:#a5487a">何</span><div><b>何雨</b><small>普通用户 · 关注 1 年</small></div></div>
+          <div class="hlw-review-stars">★★★★★</div>
+        </article>
+        <article class="hlw-review">
+          <p>手机上播放很流畅，章节标记做得清楚，这点对长片很友好。就是有时候想找旧片得翻一翻，希望检索能再强一点。</p>
+          <div class="hlw-review-head"><span class="hlw-avatar" style="background:#6b4fb3">赵</span><div><b>赵一鸣</b><small>长期用户</small></div></div>
+          <div class="hlw-review-stars">★★★★☆</div>
+        </article>
+        <article class="hlw-review">
+          <p>被苏晚的访谈打动过好几次，她问问题的方式让人愿意多说一点。希望这个系列能一直做下去。</p>
+          <div class="hlw-review-head"><span class="hlw-avatar" style="background:#b8781f">林</span><div><b>林间</b><small>社区成员 · 关注 3 年</small></div></div>
+          <div class="hlw-review-stars">★★★★★</div>
+        </article>
+      </div>
+
+      <div class="hlw-rank">
+        <div class="hlw-rank-box">
+          <h3>热度榜 <small>近 7 日播放</small></h3>
+          <div class="hlw-rank-row"><i>01</i><span>《她在社区做了九年志愿者，从没上过镜》</span><small>6.8 万</small></div>
+          <div class="hlw-rank-row"><i>02</i><span>《爬上三十七层天台，看老城区如何慢慢亮起来》</span><small>5.1 万</small></div>
+          <div class="hlw-rank-row"><i>03</i><span>《花最少的设备，拍最稳的街头素材》</span><small>4.2 万</small></div>
+          <div class="hlw-rank-row"><i>04</i><span>《六点十分的老菜场，比任何会议室都清醒》</span><small>3.9 万</small></div>
+        </div>
+        <div class="hlw-rank-box">
+          <h3>口碑榜 <small>收藏 / 播放比</small></h3>
+          <div class="hlw-rank-row"><i>01</i><span>《开面馆的第二十年，他说最怕客人夸好吃》</span><small>18.4%</small></div>
+          <div class="hlw-rank-row"><i>02</i><span>《普通人档案》整季合集</span><small>16.9%</small></div>
+          <div class="hlw-rank-row"><i>03</i><span>《一条十分钟短片，为什么剪了十二版》</span><small>15.2%</small></div>
+          <div class="hlw-rank-row"><i>04</i><span>《雨夜车站：等最后一班车的人都在想什么》</span><small>13.7%</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 + FAQ + 合作 -->
+  <section class="hlw-section" id="hlw-dynamics" aria-labelledby="hlw-dynamics-title">
+    <div class="hlw-wrap">
+      <div class="hlw-sec-head">
+        <div class="hlw-sec-head-left">
+          <span class="hlw-sec-eyebrow">NEWS / 企业动态</span>
+          <h2 class="hlw-h2" id="hlw-dynamics-title">官方发布与常见问题</h2>
+          <p class="hlw-sec-desc">项目进展、内容更新、招募报名与平台规则，都会在这里第一时间公布。</p>
+        </div>
+        <a class="hlw-sec-link" href="#hlw-contact">媒体联络 →</a>
+      </div>
+
+      <div class="hlw-dyn-grid">
+        <div>
+          <div class="hlw-dyn-list">
+            <article class="hlw-dyn-item">
+              <time datetime="2026-11-18">11-18</time>
+              <div>
+                <h4>《真实背后》第三季正式上线</h4>
+                <p>本季共 6 集，走访六个城市的记录者，首集《城四点的灯》已发布，全季支持章节跳转观看。</p>
+              </div>
+            </article>
+            <article class="hlw-dyn-item">
+              <time datetime="2026-11-16">11-16</time>
+              <div>
+                <h4>年度创作者扶持计划开放报名</h4>
+                <p>面向社区公开招募 120 位创作者，提供选题共创、拍摄支持与后期协作，报名截止 12 月 20 日。</p>
+              </div>
+            </article>
+            <article class="hlw-dyn-item">
+              <time datetime="2026-11-10">11-10</time>
+              <div>
+                <h4>内容审核与隐私保护规范更新</h4>
+                <p>新增当事人授权确认环节，所有涉及个人影像的作品须完成授权登记后方可发布，进一步保障内容生态健康。</p>
+              </div>
+            </article>
+            <article class="hlw-dyn-item">
+              <time datetime="2026-11-03">11-03</time>
+              <div>
+                <h4>影像墙开放社区投稿通道</h4>
+                <p>用户可通过投稿入口提交影像作品，编辑部每月精选一期，入选作品将在首页影像墙展示。</p>
+              </div>
+            </article>
+            <article class="hlw-dyn-item">
+              <time datetime="2026-10-27">10-27</time>
+              <div>
+                <h4>平台完成高清播放链路升级</h4>
+                <p>移动端与桌面端同步支持更稳定的高清播放，长片加载时间明显缩短，档案检索也同步优化。</p>
+              </div>
+            </article>
+          </div>
+
+          <h4 style="font-size:14px;font-weight:700;margin:30px 0 14px;letter-spacing:.06em;color:#40424a">合作品牌与伙伴</h4>
+          <div class="hlw-partners">
+            <span>城市影像档案馆</span><span>临江书店</span><span>巷口咖啡</span><span>微光放映室</span><span>青年纪录片小组</span><span>旧物修复社</span>
+          </div>
+        </div>
+
+        <div class="hlw-faq">
+          <details open>
+            <summary>平台的内容是原创正版吗？</summary>
+            <p>是的。极品黑料官方网站发布的所有影像均为平台自制或签约创作者原创，素材授权与当事人确认均已完成，支持标注来源的合理引用。</p>
+          </details>
+          <details>
+            <summary>我可以投稿自己的影像作品吗？</summary>
+            <p>可以。首页与页脚均设有投稿入口，提交后一般在 7 个工作日内收到回复，未入选作品也会给出具体修改建议。</p>
+          </details>
+          <details>
+            <summary>创作者入驻需要什么条件？</summary>
+            <p>需要至少 3 部完整作品、明确的创作方向与稳定的更新计划。我们更看重内容的真实性与叙事完成度，而非单纯的播放数据。</p>
+          </details>
+          <details>
+            <summary>专题内容多久更新一次？</summary>
+            <p>《真实背后》每周四更新，《城市暗面》双周更新，《普通人档案》已完结可整季回看，新专题《创作者的十二小时》处于征集阶段。</p>
+          </details>
+          <details>
+            <summary>影片中的人物如何保护隐私？</summary>
+            <p>涉及个人影像的作品须完成授权登记，可选择匿名、变声或画面处理。平台坚持最小必要原则，不发布未经同意的个人信息。</p>
+          </details>
+          <details>
+            <summary>是否支持商业合作与品牌共创？</summary>
+            <p>支持。我们与品牌方共同策划纪实类内容，保持创作独立性并明确标注合作属性，具体可联系官方邮箱沟通提案。</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section class="hlw-section alt" id="hlw-contact" aria-labelledby="hlw-contact-title">
+    <div class="hlw-wrap">
+      <div class="hlw-contact">
+        <div>
+          <h2 id="hlw-contact-title">和品牌编辑部聊一聊你的影像计划</h2>
+          <p>无论是投稿、入驻、合作提案，还是对平台规则有疑问，都欢迎直接联系我们。每封邮件都会有人认真读完并回复。</p>
+          <div class="hlw-contact-info">
+            <span>官方邮箱 <b>hello@jipin-heiliao.example</b></span>
+            <span>合作提案 <b>brand@jipin-heiliao.example</b></span>
+            <span>工作时间 <b>周一至周五 10:00–19:00</b></span>
+          </div>
+        </div>
+        <div class="hlw-contact-btns">
+          <button class="hlw-btn hlw-btn-primary" type="button" data-hlw-open="submit">提交投稿 / 报名</button>
+          <button class="hlw-btn hlw-btn-ghost" type="button" data-hlw-open="share">分享这个页面</button>
+          <button class="hlw-btn hlw-btn-ghost" type="button" data-hlw-open="feedback">意见反馈</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hlw-footer">
+  <div class="hlw-wrap">
+    <div class="hlw-footer-grid">
+      <div class="hlw-footer-brand">
+        <a class="hlw-logo" href="#hlw-top" aria-label="回到极品黑料官方网站顶部">
+          <span class="hlw-logo-mark" aria-hidden="true"></span>
+          <span class="hlw-logo-text"><strong>极品黑料</strong><em>JIPIN HEILIAO</em></span>
+        </a>
+        <p>极品黑料官方网站 · 深度纪实影像品牌。持续运营原创、正版、高清的精品内容，与创作者共同构建值得信赖的内容生态。</p>
+      </div>
+      <div>
+        <h4>浏览内容</h4>
+        <ul>
+          <li><a href="#hlw-focus">焦点内容</a></li>
+          <li><a href="#hlw-feed">视频流</a></li>
+          <li><a href="#hlw-topics">专题企划</a></li>
+          <li><a href="#hlw-wall">社区影像墙</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与社区</h4>
+        <ul>
+          <li><a href="#hlw-creators">创作者矩阵</a></li>
+          <li><a href="#hlw-contact">投稿入口</a></li>
+          <li><a href="#hlw-contact">合作提案</a></li>
+          <li><a href="#hlw-dynamics">报名与动态</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于品牌</h4>
+        <ul>
+          <li><a href="#hlw-about">品牌理念</a></li>
+          <li><a href="#hlw-dynamics">企业动态</a></li>
+          <li><a href="#hlw-dynamics">常见问题</a></li>
+          <li><a href="#hlw-contact">联系方式</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hlw-footer-bottom">
+      <span>© 2026 极品黑料 版权所有 · 官方网站 · 持续运营中</span>
+      <span>品牌备案号 HL-2026-1108 · 原创内容未经授权禁止搬运</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 弹窗 -->
+<div class="hlw-modal" id="hlw-modal" role="dialog" aria-modal="true" aria-labelledby="hlw-modal-title">
+  <div class="hlw-modal-box">
+    <button class="hlw-modal-close" type="button" id="hlw-modal-close" aria-label="关闭弹窗">✕</button>
+    <div id="hlw-modal-content"></div>
+  </div>
+</div>
+
+<div class="hlw-toast" id="hlw-toast" role="status" aria-live="polite"></div>
+<button class="hlw-backtop" id="hlw-backtop" type="button" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  var d = document;
+  var toastEl = d.getElementById('hlw-toast');
+  var toastTimer = null;
+
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){
+      toastEl.classList.remove('is-on');
+    }, 2200);
+  }
+
+  /* ===== 移动端导航 ===== */
+  var burger = d.getElementById('hlw-burger');
+  var nav = d.getElementById('hlw-mainnav');
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? '收起导航菜单' : '展开导航菜单');
+  });
+  nav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      nav.classList.remove('is-open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* ===== 搜索反馈 ===== */
+  var searchForm = d.getElementById('hlw-search');
+  var searchInput = d.getElementById('hlw-search-input');
+  var searchTip = d.getElementById('hlw-search-tip');
+  function doSearch(e){
+    if(e) e.preventDefault();
+    var kw = searchInput.value.trim();
+    if(!kw){
+      searchTip.textContent = '请输入关键词，例如“访谈”“城市”“幕后”。';
+      searchTip.classList.add('is-on');
+      return;
+    }
+    searchTip.textContent = '正在站内检索“' + kw + '”：已为你在焦点内容、专题企划、创作者与影像墙中匹配相关条目。';
+    searchTip.classList.add('is-on');
+    toast('已提交站内检索：' + kw);
+    var target = d.querySelector('#hlw-feed');
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  searchForm.addEventListener('submit', doSearch);
+
+  /* ===== 标签筛选 ===== */
+  var filterBtns = Array.prototype.slice.call(d.querySelectorAll('[data-hlw-filter]'));
+  var cards = Array.prototype.slice.call(d.querySelectorAll('#hlw-feed-list .hlw-card'));
+  var emptyTip = d.getElementById('hlw-feed-empty');
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      var cat = btn.getAttribute('data-hlw-filter');
+      var shown = 0;
+      cards.forEach(function(card){
+        var match = (cat === 'all') || (card.getAttribute('data-hlw-cat') === cat);
+        card.classList.toggle('is-hidden', !match);
+        if(match) shown++;
+      });
+      emptyTip.classList.toggle('is-on', shown === 0);
+      toast(shown === 0 ? '该标签下暂无内容' : '已筛选出 ' + shown + ' 部影像');
+    });
+  });
+
+  /* ===== 点赞 / 收藏 ===== */
+  d.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-hlw-like],[data-hlw-fav]');
+    if(!btn) return;
+    var label = btn.querySelector('span');
+    var isLike = btn.hasAttribute('data-hlw-like');
+    var cls = isLike ? 'is-like' : 'is-fav';
+    var act = btn.classList.toggle(cls);
+    if(isLike){
+      label.textContent = act ? '已赞' : '点赞';
+      toast(act ? '已为这部影像点赞' : '已取消点赞');
+    } else {
+      label.textContent = act ? '已收藏' : '收藏';
+      toast(act ? '已加入你的收藏夹' : '已从收藏夹移除');
+    }
+  });
+
+  /* ===== 弹窗系统 ===== */
+  var modal = d.getElementById('hlw-modal');
+  var modalContent = d.getElementById('hlw-modal-content');
+  var modalClose = d.getElementById('hlw-modal-close');
+  var lastFocus = null;
+
+  function openModal(html){
+    lastFocus = d.activeElement;
+    modalContent.innerHTML = html;
+    modal.classList.add('is-on');
+    d.body.style.overflow = 'hidden';
+    modalClose.focus();
+  }
+  function closeModal(){
+    modal.classList.remove('is-on');
+    d.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeModal();
+  });
+  d.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('is-on')) closeModal();
+  });
+
+  var templates = {
+    submit: '<h3>投稿 / 报名登记</h3><p>填写基本信息，品牌编辑部将在 7 个工作日内回复。提交即表示同意平台的内容发布规范。</p>' +
+      '<div class="hlw-field"><label for="hlw-f-name">称呼</label><input id="hlw-f-name" type="text" placeholder="如何称呼你"></div>' +
+      '<div class="hlw-field"><label for="hlw-f-mail">联系邮箱</label><input id="hlw-f-mail" type="email" placeholder="用于接收回复通知"></div>' +
+      '<div class="hlw-field"><label for="hlw-f-desc">作品或参与方向</label><textarea id="hlw-f-desc" rows="3" placeholder="例如：城市探索类短片，3 分钟以内"></textarea></div>' +
+      '<button class="hlw-btn hlw-btn-primary" type="button" data-hlw-submit>提交登记</button>',
+    share: '<h3>分享这个页面</h3><p>选择你常用的方式分享给朋友，或复制链接后粘贴到任意对话中。</p>' +
+      '<div class="hlw-share"><span data-hlw-copy>复制链接</span><span data-hlw-say="微信">微信</span><span data-hlw-say="微博">微博</span><span data-hlw-say="QQ">QQ</span></div>',
+    feedback: '<h3>意见反馈</h3><p>播放、检索或投稿流程遇到问题，都可以在这里告诉我们，反馈会直接进入编辑部处理队列。</p>' +
+      '<div class="hlw-field"><label for="hlw-f-fb">反馈内容</label><textarea id="hlw-f-fb" rows="4" placeholder="请描述你遇到的问题或建议"></textarea></div>' +
+      '<button class="hlw-btn hlw-btn-primary" type="button" data-hlw-submit>提交反馈</button>',
+    creator: function(name, field){
+      return '<h3>' + name + ' · 创作者档案</h3><p>擅长方向：' + field + '。作品以真实记录与温和访谈为主，长期参与品牌专题企划，是这个社区稳定更新的核心创作者之一。</p>' +
+        '<p style="font-size:13px;color:#5c5f68">代表作：《城四点的灯》《普通人档案》系列，以及多部创作幕后教学影像。所属专题均有官方正版授权。</p>' +
+        '<button class="hlw-btn hlw-btn-primary" type="button" data-hlw-close-inline>关注这位创作者</button>';
+    }
+  };
+
+  d.addEventListener('click', function(e){
+    var trigger = e.target.closest('[data-hlw-open]');
+    if(trigger){
+      var key = trigger.getAttribute('data-hlw-open');
+      if(key === 'creator'){
+        var html = templates.creator(
+          trigger.getAttribute('data-hlw-name') || '创作者',
+          trigger.getAttribute('data-hlw-field') || '影像创作'
+        );
+        openModal(html);
+      } else if(templates[key]){
+        openModal(templates[key]);
+      }
+      return;
+    }
+    if(e.target.closest('[data-hlw-close-inline]')){
+      toast('已关注，后续将同步 TA 的更新');
+      closeModal();
+      return;
+    }
+    if(e.target.closest('[data-hlw-submit]')){
+      var inputs = modalContent.querySelectorAll('input,textarea');
+      var filled = false;
+      for(var i=0;i<inputs.length;i++){
+        if(inputs[i].value.trim()){ filled = true; break; }
+      }
+      if(!filled){ toast('请先填写至少一项信息'); return; }
+      toast('已提交，感谢你的信任');
+      closeModal();
+      return;
+    }
+    if(e.target.closest('[data-hlw-copy]')){
+      var url = 'https://jipin.example/';
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(function(){
+          toast('链接已复制');
+        }).catch(function(){
+          toast('请手动复制地址栏链接');
+        });
+      } else {
+        toast('请手动复制地址栏链接');
+      }
+      return;
+    }
+    var say = e.target.closest('[data-hlw-say]');
+    if(say){
+      toast('已唤起' + say.getAttribute('data-hlw-say') + '分享');
+      return;
+    }
+    if(e.target.closest('[data-hlw-share]')){
+      openModal(templates.share);
+      return;
+    }
+  });
+
+  /* ===== 数字滚动 ===== */
+  var counters = Array.prototype.slice.call(d.querySelectorAll('[data-hlw-count]'));
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-hlw-count'), 10);
+    var unit = el.querySelector('em');
+    var start = null;
+    var dur = 1200;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.floor(target * eased);
+      el.firstChild.nodeValue = val;
+      if(p < 1) requestAnimationFrame(step);
+      else el.firstChild.nodeValue = target;
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          animateCount(en.target);
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:.5});
+    counters.forEach(function(c){ io.observe(c); });
+  } else {
+    counters.forEach(function(c){ c.firstChild.nodeValue = c.getAttribute('data-hlw-count'); });
+  }
+
+  /* ===== 回到顶部 ===== */
+  var backtop = d.getElementById('hlw-backtop');
+  window.addEventListener('scroll', function(){
+    backtop.classList.toggle('is-on', window.scrollY > 520);
+  }, {passive:true});
+  backtop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ===== 首屏按钮状态 ===== */
+  var heroBtns = d.querySelectorAll('.hlw-hero-btns .hlw-btn');
+  heroBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      if(b.tagName === 'BUTTON') return;
+    });
+  });
+
+})();
+</script>
+</body>
+          </html>
